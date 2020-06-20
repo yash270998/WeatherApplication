@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js">
+    </script>
+
+    <script src="websitecharts.js"></script>
+    <script src="https://kit.fontawesome.com/ee1e919155.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="main.css">
+    
+</head>
+<body>
+      <header>
+        <div class="tabs">
+            <a class="active tablinks underlined" onclick="openCity(event, 'box1')">Current Weather</a>
+            <a class="tablinks underlined" onclick="openCity(event, 'box2')">Weather Charts</a>
+            <a class="tablinks underlined" onclick="openCity(event, 'box3')">Compare City</a>
+          </div>
+      </header>
+      <!-- Tab content -->
+      <div id="box1" class="tabcontent">
+          
+            <div id="left">
+               <div id="searchDiv">
+                    <input type="text" value="" id="loc" placeholder="Search Place">
+                    <button id="btnWeather">Get Weather</button>
+                    <div id="metrics">
+                            F
+                                   <label class="switch">
+                                     <input id = "metricCheck" onchange = "currentweather()" type="checkbox" checked>
+                                     <span class="slider round"></span>
+                                   </label>C
+                     </div>
+               </div>
+               <div id="weatherCityWrapper">
+                    <span id="w-title">Weather Forecast </span><button class="btnAddCity" id="addcitybtn">Add City<i class="fas fa-plus plus"></i></button>
+                    <div id="nearby-cities">
+                        <div id="city" class="cityclass active" >
+                            <div id="city-image" onclick="callforecast1()">
+                                <img src="city1.png" id="cityimg1">
+                            </div>
+                            <span id="city-name1">
+                                Athlone
+                            </span>
+                        </div>
+                        <div id="city">
+                            <div id="city-image" onclick="callforecast2()">
+                                <img src="city5.png" id="cityimg2">
+                            </div>
+                            <span id="city-name2">
+                                Galway
+                            </span>
+                        </div>
+                        <div id="city">
+                            <div id="city-image" onclick="callforecast3()">
+                                <img src="city3.png" id="cityimg3">
+                            </div>
+                            <span id="city-name3">
+                                Limerick
+                            </span>
+                        </div>
+                        <div id="city">
+                            <div id="city-image" onclick="callforecast4()">
+                                <img src="city4.png" id="cityimg4">
+                            </div>
+                            <span id="city-name4">
+                                Dublin
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div id="lowerContainer">
+
+                    <div id="day1">
+                        <div id="day1name"></div>
+                        <div id="day1weather"></div>
+                        <div id="day1mintemp"></div>
+                        <div id="row1" style = "height : 42px;"></div>
+                        <div id="day1maxtemp"></div>
+                    </div>
+                    <div id="day2">
+                        <div id="day2name"></div>
+                        <div id="day2weather"></div>
+                        <div id="day2mintemp"></div>
+                        <div id="row2" style = "height : 42px;"></div>
+                        <div id="day2maxtemp"></div>
+                    </div>
+                    <div id="day3">
+                        <div id="day3name"></div>
+                        <div id="day3weather"></div>
+                        <div id="day3mintemp"></div>
+                        <div id="row3" style = "height : 42px;"></div>
+                        <div id="day3maxtemp"></div>
+                    </div>
+                    <div id="day4">
+                        <div id="day4name"></div>
+                        <div id="day4weather"></div>
+                        <div id="day4mintemp"></div>  
+                        <div id="row4" style = "height : 42px;"></div>
+                        <div id="day4maxtemp"> </div>
+                    </div>
+                    <div id="day5">
+                        <div id="day5name"></div>
+                        <div id="day5weather"></div>
+                        <div id="day5mintemp"></div>  
+                        <div id="row5" style = "height : 42px;"></div>
+                        <div id="day5maxtemp"></div>
+                    </div>
+                    <div id="day6">
+                        <div id="day6name"></div>
+                        <div id="day6weather"></div>
+                        <div id="day6mintemp"></div>  
+                        <div id="row6" style = "height : 42px;"></div>
+                        <div id="day6maxtemp"></div>
+                    </div>
+                </div>
+            </div>
+            <div id="right">
+                    <div id = "main">
+                                <div id="today" class="main_card">
+                                    <div id="icon">
+                                        <img id="Icon" height="48px" width="48px">
+                                    </div>
+                                    <div id="todayInfo">
+                                        <div id="day">
+                                            Today
+                                        </div>
+                                        <div id="mainheaderdate">
+                                            xx Nov, 2019
+                                        </div>
+                                    </div>
+                                </div><br>
+                                <div class="clr"></div>
+                                <div id="currentTemp"></div>
+                                <div id="weatherTitle"></div>
+                                <div id="mainheadercity"></div>
+                                <div id="mainfooterriseset"></div>
+                                <div id="wind"></div>
+                                <div id="humidity"></div>
+                    </div>
+            </div>
+        </div>
+      
+      
+      
+      <div id="box2" class="tabcontent">
+            <div id="leftchart" >
+                <div id="linechart1">
+                </div>
+            </div>
+            <div id="rightchart">
+                <div id="linechart2">
+                </div>
+            </div>
+      </div>
+
+      <div id="box3" class="tabcontent">
+            <div id="leftcity">
+                <div id="searchDiv">
+                    <button id="btnleftcity">Get Weather</button>
+                    <input type="text" value="" id="location2" placeholder="Search Place">
+                </div>
+                <div id="card">
+                        <div id="today">
+                            <div id="icon">
+                                <img id="leftIcon" height="50px" width="50px">
+                            </div>
+                            <div id="todayInfo">
+                                <div id="day">
+                                    Today
+                                </div><br>
+                                <div id="leftdate">
+                                   
+                                </div>
+                            </div>
+                        </div><br><br>
+                        <div class="clr"></div>
+                        <div id="leftTemp"></div>
+                        <div id="leftweather"></div>
+                        <div id="leftName"></div>
+                        <div id="leftsun"></div>
+                        <div id="leftwind"></div>
+                        <div id="lefthumidity"></div>
+                </div>
+            </div>
+            <div id="rightcity">
+                <div id="searchDiv">
+                    <button id="btnrightcity">Get Weather</button>
+                    <input type="text" value="" id="location3" placeholder="Search Place">
+                </div>
+                <div id="card">
+                        <div id="today">
+                            <div id="icon">
+                                <img id="rightIcon" height="48px" width="48px">
+                            </div>
+                            <div id="todayInfo">
+                                <div id="day">
+                                    Today
+                                </div><br>
+                                <div id="rightdate">
+                                   
+                                </div>
+                            </div>
+                        </div><br><br>
+                        <div class="clr"></div>
+                        <div id="rightTemp"></div>
+                        <div id="rightweather"></div>
+                        <div id="rightName"></div>
+                        <div id="rightsun"></div>
+                        <div id="rightwind"></div>
+                        <div id="righthumidity"></div>
+                </div>
+            </div>
+      </div>
+
+        <script>
+                google.charts.load('current', {packages: ['corechart', 'bar']});
+            
+             </script>
+             <script src="main.js"></script>
+      <script>
+          function openCity(evt, cityName) {
+  // Declare all variables
+  var i, tabcontent, tablinks;
+
+  // Get all elements with class="tabcontent" and hide them
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+
+  // Get all elements with class="tablinks" and remove the class "active"
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    // tablinks[i].className = tablinks[i].className.replace(" active", "");
+    tablinks[i].classList.remove("active");
+  }
+
+  // Show the current tab, and add an "active" class to the button that opened the tab
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+      </script>
+</body>
+</html>
